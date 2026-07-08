@@ -1,6 +1,6 @@
 
 import { Produkt } from "@/types/produkt";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/ProductsCard";
 
 export default async function ProduktyPage() {
 

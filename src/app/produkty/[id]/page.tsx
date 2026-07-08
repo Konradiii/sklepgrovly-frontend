@@ -1,35 +1,31 @@
-import ProductCard from "@/components/ProductCard";
-import { Produkt } from "@/types/produkt";
+import { ProduktDetail } from "@/types/produktDetails";
+import ProductDetailsCard from "@/components/ProductDetailsCard"
+
 
 type Props = {
-  params: Promise<{
-    id: string;
-  }>;
+    params: Promise<{
+        id:string;
+    }>;
 };
 
-export default async function ProduktyKategorii({ params }: Props) {
-  const { id } = await params;
 
-  const res = await fetch(
-    `http://localhost:5219/api/Product/getAllProducts?kategoriaId=${id}`,
-    {
-      cache: "no-store",
-    }
-  );
 
-  const produkty: Produkt[] = await res.json();
+export default async function produktDetailPage({ params } : Props) {
 
-  return (
-    <main className="p-8">
-      <h1 className="text-4xl font-bold text-center mb-8">
-        Produkty
-      </h1>
+    const {id} = await params
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {produkty.map((p) => (
-          <ProductCard key={p.id_Produkt} produkt={p} />
-        ))}
-      </div>
-    </main>
-  );
+    const res = await fetch(`http://localhost:5219/api/Product/${id}`,{cache:"no-store"});
+    const produktDetail: ProduktDetail = await res.json();
+
+    return(
+
+
+        <div className="grid-cols-1">
+
+            <ProductDetailsCard produktDetail={produktDetail}/>
+
+        </div>
+
+    );
+    
 }

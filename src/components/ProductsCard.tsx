@@ -5,7 +5,7 @@ type Props = {
     produkt: Produkt;
 };
 
-export default function ProductCard ({produkt}: Props){
+export default function ProductsCard ({produkt}: Props){
 
     return(
 

@@ -6,7 +6,7 @@ type Props = {
     kategoria: Kategoria;
 };
 
-export default function KategoriaCard({kategoria}: Props){
+export default function KategoryCard({kategoria}: Props){
     return(
 
 
@@ -16,7 +16,7 @@ export default function KategoriaCard({kategoria}: Props){
 
             <div className="flex justify-center">
                 <Link
-                    href={`/produkty/${kategoria.id_Kategoria}`}
+                    href={`/produkty/kategoria/${kategoria.id_Kategoria}`}
                     className="w-1/2 mt-12 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 hover:scale-105 transition text-center"
                 >
                     Wyświetl produkty
