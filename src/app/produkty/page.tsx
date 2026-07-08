@@ -1,11 +1,6 @@
 
-type Produkt = {
-    id_Produkt: number;
-    nazwa: string;
-    cena: number;
-    znizka: number;
-};
-
+import { Produkt } from "@/types/produkt";
+import ProductCard from "@/components/ProductCard";
 
 export default async function ProduktyPage() {
 
@@ -15,16 +10,12 @@ export default async function ProduktyPage() {
 
     return (
         <main className="p-8">
-        <h1 className="text-3xl font-bold">Wszystkie produkty</h1>
-        <ul className="space-y-2">
-            {produkty.map((p)=>(
-                <li key={p.id_Produkt} className="border p-4 rounded">
-                    <span className="font-semibold">{p.nazwa}</span> - {p.cena} zł
-                    {p.znizka > 0 && (<span className="text-red-600">  -{p.znizka}%</span>)}
-                </li>
-            ))}
-        </ul>
+            <h1 className="text-3xl font-bold text-center p-5 mb-8">Wszystkie produkty</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {produkty.map((p)=> (
+                    <ProductCard key={p.id_Produkt} produkt={p} />
+                ))}
+            </div>
         </main>
     );
-
 }
