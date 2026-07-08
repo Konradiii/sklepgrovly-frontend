@@ -1,5 +1,6 @@
 import { Produkt } from "@/types/produkt";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
     produkt: Produkt;
@@ -33,9 +34,11 @@ export default function ProductsCard ({produkt}: Props){
                 )}
             </div>
                 
-                <button className="w-full mt-6 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                <Link 
+                href={`/produkty/${produkt.id_Produkt}`}
+                className="w-full mt-6 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
                     Zobacz
-                </button>
+                </Link>
                 
         </div>
 

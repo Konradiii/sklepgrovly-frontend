@@ -17,15 +17,10 @@ export default async function produktDetailPage({ params } : Props) {
     const res = await fetch(`http://localhost:5219/api/Product/${id}`,{cache:"no-store"});
     const produktDetail: ProduktDetail = await res.json();
 
-    return(
-
-
-        <div className="grid-cols-1">
-
-            <ProductDetailsCard produktDetail={produktDetail}/>
-
-        </div>
-
+    return (
+    <main className="p-8 flex justify-center">
+        <ProductDetailsCard produktDetail={produktDetail} />
+    </main>
     );
     
 }
