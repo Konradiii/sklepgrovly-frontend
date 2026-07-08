@@ -12,6 +12,7 @@ export default function ProductCard ({produkt}: Props){
         
         <div className="border rounded-lg p-8 pt-4 shadow-sm hover:shadow-md transition overflow-hidden">
 
+
             <Image
                 src="/placeholder.png"
                 alt={produkt.nazwa}
