@@ -8,6 +8,7 @@ export default function Navbar(){
                 <Link href="/produkty" className="hover:underline">Produkty</Link>
                 <Link href="/kategorie" className="hover:underline">Kategorie</Link>
                 <Link href="/koszyk" className="hover:underline">Koszyk</Link>
+                <Link href="/regulamin" className="hover:underline">Regulamin</Link>
                 <Link href="/logowanie" className="hover:underline">Zaloguj</Link>
             </div>
         </nav>

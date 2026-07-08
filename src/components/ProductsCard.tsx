@@ -6,41 +6,53 @@ type Props = {
     produkt: Produkt;
 };
 
-export default function ProductsCard ({produkt}: Props){
+export default function ProductsCard({ produkt }: Props) {
+    const cenaPoZnizce =
+        produkt.znizka > 0
+            ? produkt.cena * (1 - produkt.znizka / 100)
+            : produkt.cena;
 
-    return(
-
-        
-        <div className="border rounded-lg p-8 pt-4 shadow-sm hover:shadow-md transition overflow-hidden">
-
-
-            <Image
-                src="/placeholder.png"
-                alt={produkt.nazwa}
-                width={300}
-                height={200}
-                className="w-full h-48 object-cover"
-            />
-
-            <h2 className="font-semibold text-lg">{produkt.nazwa}</h2>
-
-            <div className="flex items-center gap-2 mt-2">
-                <p>{produkt.cena} zł</p>
-
+    return (
+        <div className="group border border-gray-200 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow flex flex-col">
+            {/* Zdjęcie — niższe */}
+            <div className="relative bg-gray-100 h-40 overflow-hidden">
+                <Image
+                    src="/placeholder.png"
+                    alt={produkt.nazwa}
+                    width={300}
+                    height={160}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
                 {produkt.znizka > 0 && (
-                    <span className="text-sm text-red-600 font-medium">
+                    <span className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">
                         -{produkt.znizka}%
                     </span>
                 )}
             </div>
-                
-                <Link 
-                href={`/produkty/${produkt.id_Produkt}`}
-                className="w-full mt-6 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-                    Zobacz
-                </Link>
-                
-        </div>
 
+            {/* Treść — mniejszy padding */}
+            <div className="p-3 flex flex-col flex-1">
+                <h2 className="font-medium text-sm text-gray-900 line-clamp-2">
+                    {produkt.nazwa}
+                </h2>
+
+                <div className="mt-1 flex items-baseline gap-2">
+                    <span className="text-base font-bold text-gray-900">
+                        {cenaPoZnizce.toFixed(2)} zł
+                    </span>
+                    {produkt.znizka > 0 && (
+                        <span className="text-xs text-gray-400 line-through">
+                            {produkt.cena.toFixed(2)} zł
+                        </span>
+                    )}
+                </div>
+
+                <Link href={`/produkty/${produkt.id_Produkt}`} className="mt-auto pt-3">
+                    <span className="block w-full bg-blue-600 text-white text-center py-1.5 text-sm rounded-lg font-medium hover:bg-blue-700 transition">
+                        Zobacz
+                    </span>
+                </Link>
+            </div>
+        </div>
     );
 }
