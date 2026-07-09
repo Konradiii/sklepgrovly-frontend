@@ -1,15 +1,36 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 export default function LogowaniePage(){
 
+    const router = useRouter();
+    const { login } = useAuth();  
     const [email, setEmail] = useState("");
     const [haslo, setHaslo] = useState("");
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Email:", email, "Hasło:", haslo);
+        try {
+            const res = await fetch("http://localhost:5219/api/Auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, haslo }),
+            });
+
+            if (!res.ok) {
+                console.error("Błąd logowania:", res.status);
+                return;
+            }
+
+            const data = await res.json();
+            login(data.accessToken, data.refreshToken);   // ← Context: zapisz tokeny + ustaw stan
+            router.push("/");
+        } catch (err) {
+            console.error("Coś poszło nie tak:", err);
+        }
     };
 
     return(
@@ -59,6 +80,5 @@ export default function LogowaniePage(){
             </div>
         </main>
     );
-
 
 }
