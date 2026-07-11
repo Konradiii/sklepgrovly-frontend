@@ -3,7 +3,7 @@ export async function authFetch(url: string, options: RequestInit = {}) {
 
     const token = localStorage.getItem("accessToken");
 
-    const res = await fetch(url, {
+    let res = await fetch(url, {
         ...options,
         headers: {
             ...options.headers,
@@ -11,11 +11,11 @@ export async function authFetch(url: string, options: RequestInit = {}) {
         },
     });
 
-    if(res.status === 401 ) {
+    if (res.status === 401 ) {
         const nowyToken = await odswiezToken();
 
         if (nowyToken){
-            res = await fetch(url,{
+            res = await fetch(url, {
                 ...options,
                 headers:{
                     ...options.headers,
