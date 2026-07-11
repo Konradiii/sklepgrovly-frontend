@@ -1,10 +1,15 @@
+"use client";
 import { ProduktDetail } from "@/types/produktDetails";
+import { useCart } from "@/context/CartContext";
 
 type Props = {
     produktDetail: ProduktDetail;
 };
 
 export default function ProductDetailsCard({ produktDetail }: Props) {
+
+    const { addToCart } = useCart();
+
     const cenaPoZnizce =
         produktDetail.znizka > 0
             ? produktDetail.cena * (1 - produktDetail.znizka / 100)
@@ -25,7 +30,7 @@ export default function ProductDetailsCard({ produktDetail }: Props) {
             {/* Prawa strona — informacje */}
             <div className="md:w-1/2 p-8 flex flex-col">
                 {/* Kategoria */}
-                <span className="text-sm text-blue-600 font-medium uppercase tracking-wide">
+                <span className="text-sm text-grovly font-medium uppercase tracking-wide">
                     {produktDetail.nazwaKategorii}
                 </span>
 
@@ -68,8 +73,9 @@ export default function ProductDetailsCard({ produktDetail }: Props) {
 
                 {/* Przycisk */}
                 <button
+                    onClick={() => addToCart(produktDetail)}
                     disabled={!dostepny}
-                    className="mt-auto w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
+                    className="mt-auto w-full bg-grovly text-white py-3 rounded-xl font-semibold hover:bg-grovly-dark transition disabled:bg-gray-300 disabled:cursor-not-allowed"
                 >
                     {dostepny ? "Dodaj do koszyka" : "Brak w magazynie"}
                 </button>
