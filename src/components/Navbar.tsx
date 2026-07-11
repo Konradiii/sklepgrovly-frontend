@@ -38,25 +38,22 @@ export default function Navbar() {
                     Koszyk {count > 0 && `(${count})`}
                 </Link>
 
-                {isLoggedIn ? (
-                    <>
-                        <Link href="/konto" className="text-gray-700 hover:text-grovly transition font-medium">
-                            Konto
-                        </Link>
-                        <button
-                            onClick={handleLogout}
-                            className="bg-grovly text-white px-5 py-2 rounded-full font-medium hover:bg-grovly-dark transition"
-                        >
-                            Wyloguj
-                        </button>
-                    </>
-                ) : (
-                    <Link
-                        href="/logowanie"
-                        className="bg-grovly text-white px-5 py-2 rounded-full font-medium hover:bg-grovly-dark transition"
+            
+                <Link
+                    href={isLoggedIn ? "/konto" : "/logowanie"}
+                    className="bg-grovly text-white px-5 py-2 rounded-full font-medium hover:bg-grovly-dark transition"
+                >
+                    Moje konto
+                </Link>
+
+                
+                {isLoggedIn && (
+                    <button
+                        onClick={handleLogout}
+                        className="text-gray-700 hover:text-grovly transition font-medium cursor-pointer"
                     >
-                        Moje konto
-                    </Link>
+                        Wyloguj
+                    </button>
                 )}
             </div>
         </nav>
