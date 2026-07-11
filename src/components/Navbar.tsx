@@ -55,7 +55,7 @@ export default function Navbar() {
                         href="/logowanie"
                         className="bg-grovly text-white px-5 py-2 rounded-full font-medium hover:bg-grovly-dark transition"
                     >
-                        Zaloguj
+                        Moje konto
                     </Link>
                 )}
             </div>

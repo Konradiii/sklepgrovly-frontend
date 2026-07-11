@@ -80,7 +80,7 @@ export default function KoszykPage() {
                     </div>
                 </div>
 
-                <button className="mt-6 w-full bg-grovly text-white py-3 rounded-xl font-semibold hover:bg-grovly-dark transition">
+                <button className="mt-6 w-full bg-grovly text-white py-3 rounded-xl font-semibold hover:bg-grovly-dark transition cursor-pointer">
                     Przejdź do kasy
                 </button>
                 <Link

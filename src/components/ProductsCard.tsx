@@ -63,7 +63,7 @@ export default function ProductsCard({ produkt }: Props) {
                         console.log("Kliknięto dodaj:", produkt);
                         addToCart(produkt);
                     }}
-                    className="mt-2 w-full bg-grovly text-white text-center py-2 rounded-lg font-medium hover:bg-grovly-dark transition"
+                    className="mt-2 w-full bg-grovly text-white text-center py-2 rounded-lg font-medium hover:bg-grovly-dark transition cursor-pointer"
                 >
                     Dodaj do koszyka
                 </button>
