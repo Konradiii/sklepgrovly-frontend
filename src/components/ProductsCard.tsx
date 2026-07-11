@@ -1,12 +1,18 @@
+"use client";
+
 import { Produkt } from "@/types/produkt";
 import Image from "next/image";
 import Link from "next/link";
+import { useCart } from "@/context/CartContext";
 
 type Props = {
     produkt: Produkt;
 };
 
 export default function ProductsCard({ produkt }: Props) {
+
+    const { addToCart } = useCart();
+
     const cenaPoZnizce =
         produkt.znizka > 0
             ? produkt.cena * (1 - produkt.znizka / 100)
@@ -52,6 +58,15 @@ export default function ProductsCard({ produkt }: Props) {
                         Zobacz
                     </span>
                 </Link>
+                <button
+                    onClick={() => {
+                        console.log("Kliknięto dodaj:", produkt);
+                        addToCart(produkt);
+                    }}
+                    className="mt-2 w-full bg-grovly text-white text-center py-2 rounded-lg font-medium hover:bg-grovly-dark transition"
+                >
+                    Dodaj do koszyka
+                </button>
             </div>
         </div>
     );

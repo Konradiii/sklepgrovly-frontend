@@ -14,9 +14,7 @@ export default function Footer() {
                         height={40}
                         className="h-10 w-auto object-contain"
                     />
-                    <p className="mt-4 text-sm text-gray-400">
-                        Zabawa, która rozwija. Starannie dobrane zabawki edukacyjne dla dzieci.
-                    </p>
+                 
                 </div>
 
                 {/* Nawigacja */}

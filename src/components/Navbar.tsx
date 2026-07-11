@@ -4,11 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
+import { useCart } from "@/context/CartContext";
 
 export default function Navbar() {
     const { isLoggedIn, logout } = useAuth();
+    const { count } = useCart(); 
     const router = useRouter();
-
     const handleLogout = () => {
         logout();
         router.push("/");
@@ -34,7 +35,7 @@ export default function Navbar() {
                     Kategorie
                 </Link>
                 <Link href="/koszyk" className="text-gray-700 hover:text-grovly transition font-medium">
-                    Koszyk
+                    Koszyk {count > 0 && `(${count})`}
                 </Link>
 
                 {isLoggedIn ? (
