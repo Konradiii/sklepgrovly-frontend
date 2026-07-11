@@ -83,6 +83,11 @@ export default function KoszykPage() {
                 <button className="mt-6 w-full bg-grovly text-white py-3 rounded-xl font-semibold hover:bg-grovly-dark transition">
                     Przejdź do kasy
                 </button>
+                <Link
+                    href="/produkty"
+                    className="mt-3 block w-full text-center border border-gray-300 text-gray-700 py-3 rounded-xl font-medium hover:bg-gray-50 transition">
+                    Kontynuuj zakupy
+                </Link>
             </div>
         </main>
     );
