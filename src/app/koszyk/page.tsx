@@ -1,10 +1,18 @@
 "use client";
 
 import { useCart } from "@/context/CartContext";
+import { authFetch } from "@/app/lib/authFetch";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import Link from "next/link";
 
 export default function KoszykPage() {
     const { items, removeFromCart, updateQuantity, total, clearCart } = useCart();
+  
+    const [error, setError] = useState("");
+  
+
+   
 
     if (items.length === 0) {
         return (
@@ -80,12 +88,17 @@ export default function KoszykPage() {
                     </div>
                 </div>
 
-                <button className="mt-6 w-full bg-grovly text-white py-3 rounded-xl font-semibold hover:bg-grovly-dark transition cursor-pointer">
-                    Przejdź do kasy
-                </button>
+                {error && (
+                <p className="text-red-600 text-sm mt-4">{error}</p>
+                    )}
                 <Link
-                    href="/produkty"
-                    className="mt-3 block w-full text-center border border-gray-300 text-gray-700 py-3 rounded-xl font-medium hover:bg-gray-50 transition">
+                    href="/kasa"
+                    className="mt-6 block w-full text-center bg-grovly text-white py-3 rounded-xl font-semibold hover:bg-grovly-dark transition"
+                >
+                    Przejdź do kasy
+                </Link>
+
+                <Link href="/produkty" className="mt-3 block w-full text-center border border-gray-300 text-gray-700 py-3 rounded-xl font-medium hover:bg-gray-50 transition">
                     Kontynuuj zakupy
                 </Link>
             </div>
