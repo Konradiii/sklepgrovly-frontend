@@ -54,8 +54,8 @@ export default function ProductsCard({ produkt }: Props) {
                 </div>
 
                 <Link href={`/produkty/${produkt.id_Produkt}`} className="mt-auto pt-3">
-                    <span className="block w-full bg-blue-600 text-white text-center py-1.5 text-sm rounded-lg font-medium hover:bg-blue-700 transition">
-                        Zobacz
+                    <span className="block w-full border-2 border-grovly text-grovly text-center py-2 text-sm rounded-xl font-medium hover:bg-grovly hover:text-white transition">
+                        Pokaż produkt
                     </span>
                 </Link>
                 <button

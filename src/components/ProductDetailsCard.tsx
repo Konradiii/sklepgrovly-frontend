@@ -1,6 +1,8 @@
 "use client";
 import { ProduktDetail } from "@/types/produktDetails";
 import { useCart } from "@/context/CartContext";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type Props = {
     produktDetail: ProduktDetail;
@@ -9,6 +11,7 @@ type Props = {
 export default function ProductDetailsCard({ produktDetail }: Props) {
 
     const { addToCart } = useCart();
+    const router = useRouter();
 
     const cenaPoZnizce =
         produktDetail.znizka > 0
@@ -16,6 +19,12 @@ export default function ProductDetailsCard({ produktDetail }: Props) {
             : produktDetail.cena;
 
     const dostepny = produktDetail.iloscNaStanie > 0;
+
+
+    const handleKupTeraz = () => {
+        addToCart(produktDetail);
+        router.push("/kasa")
+    };
 
     return (
         <div className="w-full max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden md:flex">
@@ -70,8 +79,6 @@ export default function ProductDetailsCard({ produktDetail }: Props) {
                         </span>
                     )}
                 </div>
-
-                {/* Przycisk */}
                 <button
                     onClick={() => addToCart(produktDetail)}
                     disabled={!dostepny}
@@ -79,6 +86,14 @@ export default function ProductDetailsCard({ produktDetail }: Props) {
                 >
                     {dostepny ? "Dodaj do koszyka" : "Brak w magazynie"}
                 </button>
+
+                {dostepny && (
+                    <button
+                        onClick={handleKupTeraz}
+                        className="mt-3 w-full border-2 border-grovly text-grovly py-3 rounded-xl font-semibold hover:bg-grovly hover:text-white transition cursor-pointer">
+                            Kup teraz
+                        </button>
+                )}
             </div>
         </div>
     );
