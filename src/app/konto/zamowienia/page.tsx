@@ -117,14 +117,22 @@ export default function MojeZamowieniaPage() {
 
                                 {/* Produkty */}
                                 <p className="text-sm text-gray-600 mb-3">
-                                    {z.nazwyProduktow.join(", ")}
+                                    {(z.nazwyProduktow ?? []).join(", ")}
                                 </p>
 
                                 {/* Suma */}
                                 <div className="flex justify-between items-center border-t border-gray-100 pt-3">
                                     <span className="text-sm text-gray-500">
-                                        {z.nazwyProduktow.length}{" "}
-                                        {z.nazwyProduktow.length === 1 ? "pozycja" : "pozycje"}
+                                        {(z.nazwyProduktow.length ?? [] )}{" "}
+                                        {(z.nazwyProduktow.length ?? [] ) === 1 ? "pozycja" : "pozycje"}
+                                    </span>
+                                    <span>
+                                        <Link
+                                            href={`/konto/zamowienia/${z.id_Zamowienie}`}
+                                            className="text-sm text-grovly font-medium hover:underline"
+                                        >
+                                            Szczegóły →
+                                        </Link>
                                     </span>
                                     <span className="font-bold text-gray-900">
                                         {z.sumaCalkowita.toFixed(2)} zł
