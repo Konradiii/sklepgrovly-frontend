@@ -101,9 +101,9 @@ export default function KontoPage() {
                     <Link href="/konto/edytuj" className="flex-1 border border-gray-300 text-gray-700 text-center py-2.5 rounded-xl font-medium hover:bg-gray-50 transition">
                         Edytuj dane
                     </Link>
-                    <button className="flex-1 border border-gray-300 text-gray-700 py-2.5 rounded-xl font-medium hover:bg-gray-50 transition">
+                    <Link href="/konto/zmien-haslo" className="flex-1 border border-gray-300 text-gray-700 text-center py-2.5 rounded-xl font-medium hover:bg-gray-50 transition">
                         Zmień hasło
-                    </button>
+                    </Link>
                     <Link href="/konto/zamowienia" className="flex-1 bg-grovly text-white text-center py-2.5 rounded-xl font-medium hover:bg-grovly-dark transition">
                         Moje zamówienia
                     </Link>
