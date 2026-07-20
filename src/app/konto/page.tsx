@@ -35,6 +35,9 @@ export default function KontoPage() {
         pobierz();
     }, []);
 
+
+
+
     if (loading) {
         return (
             <main className="py-16 px-8 bg-white min-h-[70vh] flex items-center justify-center">
@@ -95,9 +98,9 @@ export default function KontoPage() {
 
                 {/* Akcje — na razie placeholdery */}
                 <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                    <button className="flex-1 border border-gray-300 text-gray-700 py-2.5 rounded-xl font-medium hover:bg-gray-50 transition">
+                    <Link href="/konto/edytuj" className="flex-1 border border-gray-300 text-gray-700 text-center py-2.5 rounded-xl font-medium hover:bg-gray-50 transition">
                         Edytuj dane
-                    </button>
+                    </Link>
                     <button className="flex-1 border border-gray-300 text-gray-700 py-2.5 rounded-xl font-medium hover:bg-gray-50 transition">
                         Zmień hasło
                     </button>
