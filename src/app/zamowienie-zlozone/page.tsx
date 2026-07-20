@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { CheckCircle } from "lucide-react";
+import PrzyciskZaplac from "@/components/PrzyciskZaplac";
 
 type Pozycja = {
     id_Produkt: number;
@@ -110,16 +111,27 @@ export default function ZamowienieZlozonePage() {
                     </div>
                 </div>
 
-                {/* Akcje */}
-                <div className="flex flex-col sm:flex-row gap-3">
-                    <Link href="/konto/zamowienia" className="flex-1 bg-grovly text-white text-center py-3 rounded-xl font-semibold hover:bg-grovly-dark transition">
-                        Moje zamówienia
-                    </Link>
-                    <Link href="/produkty" className="flex-1 border border-gray-300 text-gray-700 text-center py-3 rounded-xl font-medium hover:bg-gray-50 transition">
-                        Kontynuuj zakupy
-                    </Link>
+               <div className="flex flex-col gap-3">
+                     {/* Główna akcja — zapłać */}
+                    <PrzyciskZaplac orderId={zamowienie.id_Zamowienie} />
+
+                    {/* Drugorzędne — obie neutralne, obok siebie */}
+                    <div className="flex flex-col sm:flex-row gap-3">
+                        <Link
+                            href="/konto/zamowienia"
+                            className="flex-1 border border-gray-300 text-gray-700 text-center py-3 rounded-xl font-medium hover:bg-gray-50 transition"
+                        >
+                            Moje zamówienia
+                        </Link>
+                        <Link
+                            href="/produkty"
+                            className="flex-1 border border-gray-300 text-gray-700 text-center py-3 rounded-xl font-medium hover:bg-gray-50 transition"
+                        >
+                            Kontynuuj zakupy
+                        </Link>
+                    </div>
                 </div>
-            </div>
+            </div> 
         </main>
     );
 }

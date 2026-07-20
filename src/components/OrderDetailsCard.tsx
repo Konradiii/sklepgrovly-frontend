@@ -3,6 +3,8 @@
 
 import { OrderDetail } from "@/types/OrderDetail";
 import Link from "next/link";
+import PrzyciskZaplac from "@/components/PrzyciskZaplac";
+
 
 type Props = {
     order: OrderDetail;
@@ -113,14 +115,20 @@ export default function OrderDetailsCard({ order }: Props) {
                 <div className="border-t border-gray-200 mt-8 pt-6">
                     <div className="flex justify-between text-xl font-bold">
                         <span>Razem</span>
-
                         <span>{order.sumaCalkowita.toFixed(2)} zł</span>
                     </div>
                 </div>
 
+                {/* Zapłać — tylko dla nieopłaconych */}
+                {order.status === "Nowe" && (
+                    <div className="mt-6">
+                        <PrzyciskZaplac orderId={order.id_Zamowienie} />
+                    </div>
+                )}
+
                 <Link
                     href="/konto/zamowienia"
-                    className="mt-6 w-full text-center border-2 border-grovly text-grovly py-3 rounded-xl font-semibold hover:bg-grovly hover:text-white transition"
+                    className="mt-3 w-full text-center border-2 border-grovly text-grovly py-3 rounded-xl font-semibold hover:bg-grovly hover:text-white transition"
                 >
                     ← Wróć do zamówień
                 </Link>
