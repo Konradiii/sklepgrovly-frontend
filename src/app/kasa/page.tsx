@@ -154,7 +154,7 @@ export default function KasaPage() {
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="twoj@email.pl"
+                                    placeholder="podaj@email.pl"
                                     className={inputClass}
                                     required
                                 />
